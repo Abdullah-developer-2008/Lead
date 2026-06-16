@@ -338,7 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 try {
                     // Dispatch item data frame securely to the user-specific database route
-                    const response = await fetch('http://localhost:5000/api/cart/add', {
+                    const response = await fetch('/api/cart/add', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!token) return;
 
             try {
-                const response = await fetch('http://localhost:5000/api/cart', {
+                const response = await fetch('/api/cart', {
                     method: 'GET',
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
@@ -500,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Operation Branch: Increment Quantity
             if (clickTarget.closest('.qty-plus')) {
                 try {
-                    const response = await fetch('http://localhost:5000/api/cart/add', {
+                    const response = await fetch('/api/cart/add', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -519,7 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const currentQty = parseInt(contextCard.querySelector('.qty-display-value').textContent);
                     if (currentQty <= 1) return; // Prevent lowering below 1 unit boundary
 
-                    const response = await fetch('http://localhost:5000/api/cart/add', {
+                    const response = await fetch('/api/cart/add', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 contextCard.style.transition = 'all 0.3s ease';
 
                 try {
-                    const response = await fetch(`http://localhost:5000/api/cart/remove/${productId}`, {
+                    const response = await fetch(`/api/cart/remove/${productId}`, {
                         method: 'DELETE',
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (emailField) emailField.value = profile.email || "";
 
                 // Query server for verified, latest database state items
-                const response = await fetch('http://localhost:5000/api/cart', {
+                const response = await fetch('/api/cart', {
                     method: 'GET',
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                const response = await fetch('http://localhost:5000/api/orders/place', {
+                const response = await fetch('/api/orders/place', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -1108,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setButtonLoadingState(submitBtn, true, "Initializing Handshake...");
 
             try {
-                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                const response = await fetch('/api/auth/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ fullName, email, password })
@@ -1160,7 +1160,7 @@ document.addEventListener('DOMContentLoaded', () => {
             resendBtnTrigger.style.textContent = "DISPATCHING...";
 
             try {
-                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                const response = await fetch('/api/auth/signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(cachedSignupStateData)
@@ -1214,7 +1214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setButtonLoadingState(submitBtn, true, "Authorizing Entry...");
 
             try {
-                const response = await fetch('http://localhost:5000/api/auth/verify-signup', {
+                const response = await fetch('/api/auth/verify-signup', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email: temporaryStorageEmail, otpCode })
@@ -1263,7 +1263,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setButtonLoadingState(submitBtn, true, "Logging In...");
 
             try {
-                const response = await fetch('http://localhost:5000/api/auth/login', {
+                const response = await fetch('/api/auth/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
@@ -1475,7 +1475,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Verify server-side authorization token integrity match clearance
-                const response = await fetch('http://localhost:5000/api/cart/checkout', {
+                const response = await fetch('/api/cart/checkout', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
