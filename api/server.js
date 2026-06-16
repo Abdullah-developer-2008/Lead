@@ -390,87 +390,6 @@ app.post('/api/cart/checkout', requireAuth, async (req, res) => {
     }
 });
 
-// =========================================================================
-// PIPELINE SECURE ROUTE: DISPATCH / COMMIT NEW INBOUND ORDER METRICS & MAILER
-// =========================================================================
-app.post('/api/orders/place', requireAuth, async (req, res) => {
-    try {
-        const authenticatedUid = req.user?.userId || req.user?._id;
-        const username = req.user?.username || "Authenticated Node User"; 
-        
-        if (!authenticatedUid) {
-            return res.status(401).json({ error: "Unauthorized access footprint: No valid session signature found." });
-        }
-
-        const { customerInfo, items, totalPrice, paymentMethod, transactionId } = req.body;
-
-        // Form parameters verification checks
-        if (!customerInfo || !items || items.length === 0 || !totalPrice || !paymentMethod) {
-            return res.status(400).json({ error: "Missing required telemetry fields. Complete your data entry forms." });
-        }
-
-        if (paymentMethod === 'EasyPaisa' && !transactionId) {
-            return res.status(400).json({ error: "Validation failure: A Transaction ID parameter is required for digital payments." });
-        }
-
-        // STEP 1: Commit and save the new transactional Document record safely to the Database
-        const freshOrderDoc = new Order({
-            userId: authenticatedUid,
-            customerInfo,
-            items,
-            totalPrice,
-            paymentMethod,
-            transactionId: paymentMethod === 'EasyPaisa' ? transactionId : "",
-            orderStatus: 'Pending'
-        });
-
-        await freshOrderDoc.save();
-
-        // STEP 2: Clear user's active Cart ledger completely upon database validation success
-        await Cart.findOneAndUpdate(
-            { userId: authenticatedUid },
-            { $set: { items: [] } }
-        );
-
-        // STEP 3: Compile and Dispatch Professional Notification Email Asynchronously
-        const htmlMailPayload = compileOrderEmailTemplate({
-            customerInfo,
-            items,
-            totalPrice,
-            paymentMethod,
-            transactionId,
-            authenticatedUid,
-            username
-        });
-
-        const mailOptions = {
-            from: `"FutDrip Automated Engine" <${process.env.SMTP_USER}>`,
-            to: 'abdullah7qow@gmail.com', 
-            subject: 'New Order Received - FutDrip',
-            html: htmlMailPayload
-        };
-
-        // Asynchronously dispatch email without blocking client HTTP response loop
-        orderMailTransporter.sendMail(mailOptions, (mailErr, info) => {
-            if (mailErr) {
-                console.error("❌ [ADMIN TELEMETRY ERROR] SMTP Relay Failed to push notification vector:", mailErr);
-            } else {
-                console.log("⚡ [SMTP RELAY SUCCESS] Summary email tracking logs synced up:", info.messageId);
-            }
-        });
-
-        // STEP 4: Immediately respond back to client successfully
-        res.status(201).json({ 
-            success: true, 
-            message: "Order synchronized and archived down to live database ledger clusters.",
-            orderId: freshOrderDoc._id 
-        });
-
-    } catch (err) {
-        console.error("ORDER LIFECYCLE COMMIT EXCEPTION:", err);
-        res.status(500).json({ error: "Internal processing crash inside order pipeline: " + err.message });
-    }
-});
 
 
 
@@ -479,3 +398,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`>>> SECURE LOGISTICS RUNNING ON PORTS // LOCK_TRACK , >>> SERVER INITIALIZED AND ACTIVE ON PORT CONTAINER: ${PORT}`);
 });
+
+module.exports = app;
