@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lead Store | Level Up Your Style</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="bg-blur-blob blob-1"></div>
+    <div class="bg-blur-blob blob-2"></div>
+    <div class="particles-container" id="particles"></div>
+
+
+
+    <div class="auth-matrix-overlay" id="auth-overlay">
+        <div class="auth-matrix-container">
+            <button class="auth-close-trigger" id="auth-close-btn" aria-label="Close Portal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="auth-structural-box" id="auth-structural-box">
+
+                <div class="auth-panel-view panel-login">
+                    <span class="auth-hud-tag">> SECURE_NODE // USER AUTH</span>
+                    <h2 class="auth-glitch-title">ACCESS PORTAL</h2>
+                    <p class="auth-subtitle">Initialize your core secure synchronization matrix.</p>
+
+                    <form class="auth-form-pipeline" id="network-login-form">
+                        <div class="auth-input-group">
+                            <label for="login-email">SECURE OPERATOR EMAIL</label>
+                            <div class="input-field-wrapper">
+                                <i class="fa-solid fa-envelope field-icon"></i>
+                                <input type="email" id="login-email" placeholder="name@domain.com" required>
+                            </div>
+                        </div>
+                        <div class="auth-input-group">
+                            <label for="login-pass">SECURITY ACCESS PASSKEY</label>
+                            <div class="input-field-wrapper">
+                                <i class="fa-solid fa-shield-halved"></i>
+                                <input type="password" id="login-pass" placeholder="ENTER ACCOUNT PASSWORD" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-auth-execute">
+                            INITIALIZE SESSION <i class="fa-solid fa-right-to-bracket"></i>
+                        </button>
+                    </form>
+
+                    <div class="auth-routing-footer">
+                        <span>New to the network?</span>
+                        <button class="auth-toggle-link" id="switch-to-signup">REQUEST ACCESS PERMIT</button>
+                    </div>
+                </div>
+
+                <div class="auth-panel-view panel-signup">
+                    <span class="auth-hud-tag">> SECURE_NODE // CREATE ACCOUNT</span>
+                    <h2 class="auth-glitch-title">REGISTER PROTOCOL</h2>
+                    <p class="auth-subtitle">Establish a new node credential allocation profile.</p>
+
+                    <form class="auth-form-pipeline" id="network-signup-form">
+                        <div class="auth-input-group">
+                            <label for="signup-name">OPERATOR FULL NAME</label>
+                            <div class="input-field-wrapper">
+                                <i class="fa-solid fa-user field-icon"></i>
+                                <input type="text" id="signup-name" placeholder="Abdullah" required>
+                            </div>
+                        </div>
+                        <div class="auth-input-group">
+                            <label for="signup-email">DESIRED DESTINATION EMAIL</label>
+                            <div class="input-field-wrapper">
+                                <i class="fa-solid fa-envelope field-icon"></i>
+                                <input type="email" id="signup-email" placeholder="name@domain.com" required>
+                            </div>
+                        </div>
+                        <div class="auth-input-group">
+                            <label for="signup-pass">ESTABLISH SECURE PASSKEY</label>
+                            <div class="input-field-wrapper">
+                                <i class="fa-solid fa-shield field-icon"></i>
+                                <input type="password" id="signup-pass" placeholder="MINIMUM 8 CHARACTERS" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-auth-execute">
+                            GENERATE PROFILE <i class="fa-solid fa-user-plus"></i>
+                        </button>
+                    </form>
+                    <div id="signup-otp-panel" style="display: none; margin-top: 1rem; width: 100%;">
+                        <form id="network-otp-form" class="auth-form-pipeline">
+                            <div class="auth-input-group">
+                                <label for="verification-code">6-DIGIT CORE VERIFICATION TOKEN</label>
+                                <div class="input-field-wrapper">
+                                    <i class="fa-solid fa-key field-icon"></i>
+                                    <input type="text" id="verification-code" placeholder="000000" maxlength="6"
+                                        pattern="\d{6}" required
+                                        style="text-align: center; font-size: 1.3rem; letter-spacing: 0.4rem; padding-left: 0.4rem; font-weight: 700;">
+                                </div>
+                            </div>
+
+                            <div class="otp-timer-hud-row"
+                                style="display: flex; align-items: center; justify-content: space-between; margin: -0.25rem 0 1.25rem 0; font-size: 0.78rem; font-weight: 700;">
+                                <div id="otp-countdown-display" style="color: #ff3b30; letter-spacing: 0.02rem;">
+                                    <i class="fa-solid fa-clock-rotate-left"></i> WINDOW CLOSING IN: <span
+                                        id="otp-timer-clock">05:00</span>
+                                </div>
+                                <button type="button" id="otp-resend-action-trigger" disabled
+                                    style="background: none; border: none; color: #5b6b94; cursor: not-allowed; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04rem; transition: color 0.2s;">
+                                    RESEND TOKEN
+                                </button>
+                            </div>
+
+                            <button type="submit" id="otp-submit-btn-trigger" class="btn-auth-execute">
+                                VERIFY & AUTHORIZE ENTRY <i class="fa-solid fa-shield-halved"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="auth-routing-footer">
+                        <span>Already have credentials?</span>
+                        <button class="auth-toggle-link" id="switch-to-login">RETURN TO LOGIN PORTAL</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="page-transit-overlay" id="transit-curtain"></div>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo.jpeg" alt="Lead Store Logo">
+            </a>
+
+            <div class="nav-navigation-wrapper" id="mobile-menu-drawer">
+                <nav class="nav-links">
+                    <a href="index.html" class="active">Home</a>
+                    <a href="pages/shop.html">Shop</a>
+                    <a href="pages/shop.html">Accessories</a>
+                    <a href="pages/contact.html">Contact</a>
+                </nav>
+
+                <div class="mobile-auth-sync-container">
+                    <div id="nav-guest-links-mobile" class="mobile-guest-links">
+                        <a href="#" class="mobile-link-login" id="nav-login-trigger-mobile">LOG IN</a>
+                        <button class="mobile-btn-signup" id="nav-signup-trigger-mobile">SIGN UP</button>
+                    </div>
+
+                    <div id="nav-user-profile-mobile" class="mobile-user-profile" style="display: none;">
+                        <div class="mobile-profile-info">
+                            <div class="avatar-circle" id="user-avatar-badge-mobile">U</div>
+                            <span class="profile-name" id="user-display-name-mobile">Operator</span>
+                        </div>
+                        <div class="mobile-profile-menu">
+                            <a href="#profile" class="mobile-menu-item"><i class="fa-solid fa-user-gear"></i>
+                                Profile</a>
+                            <a href="#settings" class="mobile-menu-item"><i class="fa-solid fa-sliders"></i>
+                                Settings</a>
+                            <button class="mobile-menu-item mobile-logout" id="session-logout-btn-mobile">
+                                <i class="fa-solid fa-power-off"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <div id="nav-guest-links" style="display: flex; align-items: center; gap: 1rem;">
+                    <a href="#" class="link-login" id="nav-login-trigger">LOG IN</a>
+                    <button class="btn-signup" id="nav-signup-trigger">SIGN UP</button>
+                </div>
+
+                <div id="nav-user-profile" class="user-profile-zone" style="display: none;">
+                    <div class="profile-trigger-wrapper" id="profile-menu-trigger">
+                        <div class="avatar-circle" id="user-avatar-badge">U</div>
+                        <span class="profile-operator-name" id="user-display-name">Operator</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow-icon"></i>
+                    </div>
+
+                    <div class="profile-dropdown-matrix" id="profile-floating-dropdown">
+                        <div class="dropdown-header-context">
+                            <span class="operator-role-tag">> ACTIVE_SESSION</span>
+                        </div>
+                        <a href="#profile" class="dropdown-link-item">
+                            <i class="fa-solid fa-user-gear"></i> Profile
+                        </a>
+                        <a href="#settings" class="dropdown-link-item">
+                            <i class="fa-solid fa-sliders"></i> Settings
+                        </a>
+                        <div class="dropdown-divider-line"></div>
+                        <button class="dropdown-link-item logout-action-trigger" id="session-logout-btn">
+                            <i class="fa-solid fa-power-off"></i> Logout
+                        </button>
+                    </div>
+                </div>
+
+                <button class="nav-cart-trigger" id="global-cart-btn" onclick="navigateToCart(event)">
+                    <div class="cart-icon-wrapper">
+                        <svg class="svg-cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1"></circle>
+                            <circle cx="19" cy="21" r="1"></circle>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
+                            </path>
+                        </svg>
+                        <span class="cart-pulse-badge" id="cart-item-indicator"></span>
+                    </div>
+                    <span class="cart-trigger-label">VAULT</span>
+                </button>
+
+                <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Toggle Navigation Menu">
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                    <span class="hamburger-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main class="hero-section" id="hero">
+        <div class="hero-container">
+
+            <div class="hero-content">
+                <div class="badge-reveal">
+                    <span class="cyber-badge">NEXT-GEN SPORTSWEAR</span>
+                </div>
+                <h1 class="text-reveal">
+                    <span>LEVEL UP</span>
+                    <span class="gradient-text">YOUR STYLE</span>
+                </h1>
+                <p class="subheadline">Premium Sneakers & Gym Essentials</p>
+                <p class="paragraph">
+                    Discover futuristic sneakers and premium gym accessories designed for athletes and trendsetters.
+                    Engineered for performance, styled for the streets.
+                </p>
+                <div class="hero-buttons">
+                    <!-- Wired directly to your main product catalog page -->
+                    <button class="btn-neon primary-hero-btn" onclick="window.location.href='pages/shop.html'">
+                        Explore Collection <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-outline">Watch Trends <i class="fa-solid fa-play"></i></button>
+                </div>
+            </div>
+
+            <div class="hero-visual" id="visual-container">
+                <div class="glow-ring"></div>
+                <div class="shadow-element"></div>
+
+                <div class="slider-wrapper">
+                    <div class="slide active" data-index="0">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80"
+                            alt="Premium Neon Sneaker" class="parallax-img">
+                        <span class="floating-tag tag-1">⚡ Ultra Responsive</span>
+                    </div>
+                    <div class="slide" data-index="1">
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+                            alt="Gym Accessories" class="parallax-img">
+                        <span class="floating-tag tag-2">💪 Premium Build</span>
+                    </div>
+                    <div class="slide" data-index="2">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80"
+                            alt="Sports Fashion" class="parallax-img">
+                        <span class="floating-tag tag-3">🔥 Street Icon</span>
+                    </div>
+                </div>
+
+                <div class="slider-controls">
+                    <div class="control-dot active" data-slide="0"></div>
+                    <div class="control-dot" data-slide="1"></div>
+                    <div class="control-dot" data-slide="2"></div>
+                </div>
+
+                <div class="category-label" id="current-label">Sneakers</div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: FEATURES & INTERACTIVE BLUEPRINT -->
+    <!-- ========================================== -->
+    <section class="showcase-section">
+        <div class="showcase-container">
+
+            <!-- Left Side: Horizontal Interactive Cards Tracking Live Trends -->
+            <div class="trends-panel">
+                <div class="section-header">
+                    <span class="cyber-badge-sm">01 // THE LAB</span>
+                    <h2>HOT DROPS <span class="accent-dot">.</span></h2>
+                    <p>Tap to inspect active design metrics and engineering specifications.</p>
+                </div>
+
+                <div class="trend-cards-stack">
+                    <!-- Card 1 -->
+                    <div class="trend-card active" data-target="sole">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">PERFORMANCE</span>
+                            <h3>QUANTUM MIDSOLE</h3>
+                            <p>Packed with pressurized nitrogen pockets for maximum kinetic energy return with every
+                                step.</p>
+                            <div class="card-footer">
+                                <span class="metric">98% Response Rate</span>
+                                <i class="fa-solid fa-microchip status-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="trend-card" data-target="upper">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">MATERIAL ARCHITECTURE</span>
+                            <h3>AERO-WEAVE UPPER</h3>
+                            <p>Engineered from ballistic fibers woven with metallic polymers for complete weatherproof
+                                durability.</p>
+                            <div class="card-footer">
+                                <span class="metric">Ultra Light // 180g</span>
+                                <i class="fa-solid fa-wind status-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="trend-card" data-target="lace">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <span class="card-tag">INTELLIGENCE</span>
+                            <h3>MATRIX UTILITY STRAP</h3>
+                            <p>Industrial-grade tension locks that dynamically adjust pressure profile mapping during
+                                gym sessions.</p>
+                            <div class="card-footer">
+                                <span class="metric">Custom Adaptive Fit</span>
+                                <i class="fa-solid fa-sliders status-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: The Interactive Blueprint X-Ray Scan Canvas -->
+            <div class="blueprint-panel">
+                <div class="blueprint-canvas" id="blueprint-canvas">
+                    <!-- Scanner Line Graphic Overlay -->
+                    <div class="laser-scanner"></div>
+
+                    <!-- Background HUD graphics -->
+                    <div class="hud-circle-outer"></div>
+                    <div class="hud-circle-inner"></div>
+                    <div class="grid-overlay"></div>
+
+                    <!-- Main Core Showcase Asset -->
+                    <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80"
+                        alt="Tech Sneaker X-Ray View" class="blueprint-img">
+
+                    <!-- Interactive Scan Target Rings mapping onto shoe parts -->
+                    <div class="scan-node node-sole active" data-node="sole" style="top: 72%; left: 55%;">
+                        <div class="ping"></div>
+                        <div class="node-label"><span>[ MODULE_01 // MIDSOLE ]</span></div>
+                    </div>
+
+                    <div class="scan-node node-upper" data-node="upper" style="top: 35%; left: 40%;">
+                        <div class="ping"></div>
+                        <div class="node-label"><span>[ MODULE_02 // MESH ]</span></div>
+                    </div>
+
+                    <div class="scan-node node-lace" data-node="lace" style="top: 25%; left: 65%;">
+                        <div class="ping"></div>
+                        <div class="node-label"><span>[ MODULE_03 // TENSION ]</span></div>
+                    </div>
+
+                    <!-- Dynamic HUD Digital readout terminal display -->
+                    <div class="hud-readout">
+                        <div class="terminal-bar">SYSTEM STATUS: READY</div>
+                        <div class="terminal-body">
+                            <p id="hud-text-title">> DIAGNOSTIC LOADED</p>
+                            <p id="hud-text-desc">> Select a module matrix parameters to inspect engineering components
+                                layer profiles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: INTERACTIVE CATEGORY MATRIX   -->
+    <!-- ========================================== -->
+    <section class="categories-section">
+        <div class="matrix-container">
+
+            <div class="section-header center-align">
+                <span class="cyber-badge-sm">02 // GEAR SELECTOR</span>
+                <h2>EXPLORE THE COLOSSUS <span class="accent-dot">.</span></h2>
+                <p>Select your specialized equipment division below to access targeted inventories.</p>
+            </div>
+
+            <div class="matrix-row">
+                <div class="matrix-box card-sneakers"
+                    onclick="window.location.href='pages/shop.html?category=sneakers'">
+                    <div class="box-bg-graphic"></div>
+                    <div class="box-content">
+                        <div class="box-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+                        <div class="box-text">
+                            <h3>Sneekers</h3>
+                            <span>Hyper-Drops <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="matrix-box card-streetwear"
+                    onclick="window.location.href='pages/shop.html?category=sports'">
+                    <div class="box-bg-graphic"></div>
+                    <div class="box-content">
+                        <div class="box-icon"><i class="fa-solid fa-shirt"></i></div>
+                        <div class="box-text">
+                            <h3>Sprots</h3>
+                            <span>Cyber Culture <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="matrix-box card-limited" onclick="window.location.href='pages/labEdition.html'">
+                    <div class="box-bg-graphic"></div>
+                    <div class="box-content">
+                        <div class="box-icon"><i class="fa-solid fa-crown"></i></div>
+                        <div class="box-text">
+                            <h3>Male</h3>
+                            <span>Rare Collectibles <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="matrix-row">
+                <div class="matrix-box card-bags" onclick="window.location.href='pages/shop.html?category=bags'">
+                    <div class="box-bg-graphic"></div>
+                    <div class="box-content">
+                        <div class="box-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <div class="box-text">
+                            <h3>TACTICAL BAGS</h3>
+                            <span>Waterproof Cargo <i class="fa-solid fa-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: FEATURED PRODUCTS CAROUSEL   -->
+    <!-- ========================================== -->
+    <section class="products-section">
+        <div class="products-container">
+
+            <div class="section-header side-by-side">
+                <div>
+                    <span class="cyber-badge-sm">03 // EXCLUSIVE DROPS</span>
+                    <h2>FEATURED PRODUCTS <span class="accent-dot">.</span></h2>
+                </div>
+                <p class="header-desc">Engineered limitlessly. Crafted with technical precision for maximum physical
+                    output.</p>
+            </div>
+
+            <!-- Product Display Grid -->
+            <div class="products-grid">
+
+                <!-- Product 1 -->
+                <div class="product-card" data-id="prod-01" data-name="Apex Quantum (Neon Volt)" data-price="189.00"
+                    data-img="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+                    data-brand="quantum" data-color="Volt Cyber" data-size="34">
+                    <div class="product-img-holder">
+                        <span class="prod-badge badge-hot">HOT</span>
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+                            alt="Apex Quantum Neon Sneaker">
+                        <div class="action-overlay">
+                            <button class="btn-quick-add add-to-cart-btn-trigger"
+                                onclick="interceptAddToCartActionPipeline({ id: 'PROD_091', title: 'Luxury Kit Edition', cost: 85 })">
+                                <i class="fa-solid fa-cart-plus"></i> QUICK ADD
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="prod-cat">Footwear // Performance</span>
+                        <h3 class="prod-title">Apex Quantum "Neon Volt"</h3>
+                        <div class="prod-meta">
+                            <span class="prod-price">$189.00</span>
+                            <div class="prod-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-id="prod-02" data-name="Carbon-Weave Lifting Straps" data-price="34.99"
+                    data-img="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80"
+                    data-brand="quantum" data-color="Volt Cyber" data-size="34">
+                    <div class="product-img-holder">
+                        <span class="prod-badge badge-new">NEW</span>
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=600&q=80"
+                            alt="Ironclad Grip Straps">
+                        <div class="action-overlay">
+                            <button class="btn-quick-add add-to-cart-btn-trigger"
+                                onclick="interceptAddToCartActionPipeline({ id: 'PROD_091', title: 'Luxury Kit Edition', cost: 85 })">
+                                <i class="fa-solid fa-cart-plus"></i> QUICK ADD
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="prod-cat">Accessories // Gym</span>
+                        <h3 class="prod-title">Carbon-Weave Lifting Straps</h3>
+                        <div class="prod-meta">
+                            <span class="prod-price">$34.99</span>
+                            <div class="prod-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-id="prod-03" data-name="Vanguard Core (Cyber Navy)" data-price="210.00"
+                    data-img="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=600&q=80"
+                    data-brand="quantum" data-color="Volt Cyber" data-size="34">
+                    <div class="product-img-holder">
+                        <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=600&q=80"
+                            alt="Vanguard Core Sneaker">
+                        <div class="action-overlay">
+                            <button class="btn-quick-add" onclick="console.log('Added Card 3 to cart')">
+                                <i class="fa-solid fa-cart-plus"></i> QUICK ADD
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="prod-cat">Footwear // Street</span>
+                        <h3 class="prod-title">Vanguard Core "Cyber Navy"</h3>
+                        <div class="prod-meta">
+                            <span class="prod-price">$210.00</span>
+                            <div class="prod-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-id="prod-04" data-name="Matrix Stealth Utility Hoodie"
+                    data-price="210.00"
+                    data-img="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80"
+                    data-brand="quantum" data-color="Volt Cyber" data-size="34">
+                    <div class="product-img-holder">
+                        <span class="prod-badge badge-limited">LIMITED</span>
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=600&q=80"
+                            alt="Matrix Thermo Hoodie">
+                        <div class="action-overlay">
+                            <button class="btn-quick-add" onclick="console.log('Added Card 4 to cart')">
+                                <i class="fa-solid fa-cart-plus"></i> QUICK ADD
+                            </button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="prod-cat">Apparel // Streetwear</span>
+                        <h3 class="prod-title">Matrix Stealth Utility Hoodie</h3>
+                        <div class="prod-meta">
+                            <span class="prod-price">$125.00</span>
+                            <div class="prod-rating">
+                                <i class="fa-solid fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="products-footer">
+                <button class="btn-outline-dark" onclick="window.location.href='pages/shop.html'">View Entire Inventory
+                    <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: LIMITED DROP COUNTDOWN BANNER -->
+    <!-- ========================================== -->
+    <section class="countdown-banner-section">
+        <div class="banner-overlay-grid"></div>
+        <div class="banner-inner-container">
+
+            <div class="drop-meta-side">
+                <span class="cyber-badge-sm badge-alert">
+                    <span class="pulse-dot"></span> SEASONAL RELEASE // AUTHENTIC APPAREL
+                </span>
+                <h2 class="banner-title">PROJECT: VANGUARD <br><span class="text-glow">"DARK MATTER" EDITION</span></h2>
+                <p class="banner-subtitle">Premium precision-engineered performance kit. Built for elite responsiveness,
+                    maximum comfort, and tailored aesthetics on or off the pitch.</p>
+
+                <div class="live-progress-container">
+                    <div class="progress-labels">
+                        <span>COLLECTION BATCH RATING</span>
+                        <span class="progress-percentage">PREMIUM SPECIFICATION</span>
+                    </div>
+                    <div class="progress-bar-axis">
+                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="drop-timer-side">
+                <span class="timer-label">DESIGN SPECIFICATIONS:</span>
+
+                <div class="digital-countdown">
+                    <div class="time-block">
+                        <span class="time-num">FUT</span>
+                        <span class="time-label-sm">STYLE</span>
+                    </div>
+                    <div class="time-divider">//</div>
+                    <div class="time-block">
+                        <span class="time-num">DRP</span>
+                        <span class="time-label-sm">GEAR</span>
+                    </div>
+                    <div class="time-divider">//</div>
+                    <div class="time-block">
+                        <span class="time-num">26</span>
+                        <span class="time-label-sm">YEAR</span>
+                    </div>
+                </div>
+
+                <div class="banner-action-row">
+                    <span class="action-caption" style="margin-left: 0;">
+                        <i class="fa-solid fa-shield-halved"></i> Premium Construction Guarantee Matrix Active
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: COMMUNITY & NEWSLETTER LINK   -->
+    <!-- ========================================== -->
+    <section class="community-broadcast-section">
+        <div class="broadcast-container">
+
+            <!-- Column 1: Ecosystem Brand Info -->
+            <div class="broadcast-culture-card">
+                <span class="cyber-badge-sm">04 // JOIN THE TRIBE</span>
+                <h2>OUR CULTURE NEVER RESTS<span class="accent-dot">.</span></h2>
+                <p>Follow our official community hubs for unannounced streetwear capsule drops, regional athlete
+                    meetups, and direct access to beta-testing squads.</p>
+
+                <div class="broadcast-social-matrix">
+                    <a href="#" class="social-hud-link"><i class="fa-brands fa-instagram"></i> INSTAGRAM</a>
+                    <a href="#" class="social-hud-link"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
+                    <a href="#" class="social-hud-link"><i class="fa-brands fa-discord"></i> DISCORD</a>
+                </div>
+            </div>
+
+            <!-- Column 2: Newsletter Broadcast Form Panel -->
+            <div class="broadcast-input-card">
+                <div class="card-glow-layer"></div>
+                <div class="input-card-inner">
+                    <h3>NEWSLETTER</h3>
+                    <p>Subscribe to secure early transmission access codes.</p>
+
+                    <form class="input-wrapper" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="ENTER YOUR EMAIL" class="cyber-input" required>
+                        <button type="submit" class="btn-portal-submit" aria-label="Submit Email Address">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+
+                    <label class="checkbox-container">
+                        I AGREE TO THE PRIVACY POLICY PARAMS
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: TRUST & CONSUMER REVIEWS      -->
+    <!-- ========================================== -->
+    <section class="reviews-section">
+        <div class="reviews-container">
+
+            <div class="section-header center-align">
+                <span class="cyber-badge-sm">05 // COMMUNITY VERIFIED</span>
+                <h2>FIELD INTELLIGENCE <span class="accent-dot">.</span></h2>
+                <p>Real feedback from elite athletes and streetwear collectors globally.</p>
+            </div>
+
+            <!-- Asymmetrical Review Masonry/Flex Layout -->
+            <div class="reviews-grid">
+
+                <!-- Review 1: Large Featured Review -->
+                <div class="review-card card-featured">
+                    <div class="review-quote-icon">“</div>
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">The response timing on the Apex Quantum drops is unmatched. The silhouette
+                        frame fits absolutely perfectly, and the carbon plate energy return completely changed my track
+                        sessions. Worth every single single dollar.</p>
+                    <div class="review-user">
+                        <div class="user-avatar avatar-1"></div>
+                        <div class="user-meta">
+                            <h4>Marcus Vance</h4>
+                            <span><i class="fa-solid fa-circle-check"></i> VERIFIED SNEAKERHEAD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2: Mid Sized Review -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="review-text">Heavy duty industrial building at its finest. These tactical lifting straps
+                        do not slip or shred under 250kg loads. Absolutely vital piece of gear.</p>
+                    <div class="review-user">
+                        <div class="user-avatar avatar-2"></div>
+                        <div class="user-meta">
+                            <h4>Dimitri R.</h4>
+                            <span><i class="fa-solid fa-circle-check"></i> POWERLIFTER</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3: Mid Sized Review -->
+                <div class="review-card">
+                    <div class="review-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star-sm"></i>
+                    </div>
+                    <p class="review-text">The Matrix Hoodie is pure cyber culture. Keeps thermal heat locked perfectly
+                        while remaining lightweight. Waiting eagerly for the next limited drop phase!</p>
+                    <div class="review-user">
+                        <div class="user-avatar avatar-3"></div>
+                        <div class="user-meta">
+                            <h4>Elena Rostova</h4>
+                            <span><i class="fa-solid fa-circle-check"></i> VERIFIED BUYER</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- NEW SECTION: ULTIMATE ARCHITECTURAL FOOTER -->
+    <!-- ========================================== -->
+    <footer class="cyber-footer">
+        <div class="footer-container">
+
+            <div class="footer-main-grid">
+
+                <div class="footer-pillar pillar-brand">
+                    <div class="footer-logo">COLOSSUS<span class="accent-dot">.</span></div>
+                    <p class="brand-pitch">Engineering the future of human motion. Our specialized apparel and
+                        performance footwear matrices are designed for high-output tactical utility.</p>
+                    <div class="system-status-indicator">
+                        <span class="status-pulse"></span>
+                        <span class="status-lbl">ALL PLATFORM METRICS OPERATIONAL // 99.98%</span>
+                    </div>
+                </div>
+
+                <div class="footer-pillar">
+                    <h4>DIVISIONS</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-shop-filter" data-filter="footwear">Footwear Engine</a></li>
+                        <li><a href="#" class="footer-shop-filter" data-filter="streetwear">Streetwear Labs</a></li>
+                        <li><a href="#" class="footer-shop-filter" data-filter="accessories">Gym Accessories</a></li>
+                        <li><a href="#" class="footer-shop-filter" data-filter="limited">Limited Drops</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-pillar">
+                    <h4>RESOURCES</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-info-trigger" data-doc="api">API Documentation</a></li>
+                        <li><a href="#" class="footer-info-trigger" data-doc="tracking">Tracking Portal</a></li>
+                        <li><a href="#" class="footer-info-trigger" data-doc="sizing">Sizing Blueprints</a></li>
+                        <li><a href="#" class="footer-info-trigger" data-doc="affiliate">Affiliate System</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-pillar">
+                    <h4>GOVERNANCE</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-info-trigger" data-doc="encryption">Data Encryption Policy</a>
+                        </li>
+                        <li><a href="#" class="footer-info-trigger" data-doc="terms">Terms of Deployment</a></li>
+                        <li><a href="#" class="footer-info-trigger" data-doc="pay">Secure Pay Gateways</a></li>
+                        <li><a href="#" class="footer-info-trigger" data-doc="returns">Return Protocols</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div class="copyright-block">
+                    <span>© 2026 COLOSSUS LABS INC. ALL RIGHTS RESERVED.</span>
+                </div>
+                <div class="hud-telemetry-block">
+                    <span>LATENCY: 14MS</span>
+                    <span class="divider">//</span>
+                    <span>LOC: 45.109.84</span>
+                    <span class="divider">//</span>
+                    <span>SECURE NODE</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="massive-footer-bg-text">COLOSSUS</div>
+    </footer>
+
+    <div class="footer-modal-overlay" id="footer-node-modal">
+        <div class="footer-modal-box">
+            <div class="footer-modal-header">
+                <span class="terminal-prefix">> CORE_DATA_CORE // </span>
+                <span id="footer-modal-title" style="color:#ffffff; font-weight:700;">DOCUMENTATION</span>
+                <button class="footer-modal-close" id="footer-modal-close-btn"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="footer-modal-body" id="footer-modal-content">
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal-overlay" id="global-system-modal">
+        <div class="custom-modal-box">
+            <div class="modal-status-icon-zone" id="modal-icon-wrapper">
+            </div>
+            <h3 class="modal-main-title" id="modal-title-text">SYSTEM STATUS</h3>
+            <p class="modal-body-description" id="modal-body-text">Processing core telemetry validation loops...</p>
+
+            <button class="modal-action-btn" id="modal-continue-btn">
+                CONTINUE <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
