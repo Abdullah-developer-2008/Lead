@@ -14,496 +14,526 @@
    CORE COMPONENT OVERLAY AND POSITION LAYERS
    ========================================================================= */
 
-.custom-modal-overlay {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    background: rgba(0, 0, 0, 0.4);
-    transition: opacity 0.3s ease;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 999999;
-    display: none; /* Controlled dynamically via active state classes */
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    box-sizing: border-box;
-}
+        .custom-modal-overlay {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background: rgba(0, 0, 0, 0.4);
+            transition: opacity 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 999999;
+            display: none;
+            /* Controlled dynamically via active state classes */
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            box-sizing: border-box;
+        }
 
-/* Base Modal Card Outer Shell Architecture */
-.custom-modal-box {
-    max-width: 1050px;
-    width: 100%;
-    background: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
-    transform: scale(0.95);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    max-height: calc(100vh - 48px);
-    display: flex;
-    flex-direction: column;
-}
+        /* Base Modal Card Outer Shell Architecture */
+        .custom-modal-box {
+            max-width: 1050px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: calc(100vh - 48px);
+            display: flex;
+            flex-direction: column;
+        }
 
-/* Animation Hooks */
-.custom-modal-overlay.active-view {
-    opacity: 1;
-}
-.custom-modal-overlay.active-view .custom-modal-box {
-    transform: scale(1);
-}
+        /* Animation Hooks */
+        .custom-modal-overlay.active-view {
+            opacity: 1;
+        }
 
-/* Interactive Pass-Through Elements */
-#product-details-modal.custom-modal-overlay,
-#product-details-modal .custom-modal-box {
-    pointer-events: auto;
-}
+        .custom-modal-overlay.active-view .custom-modal-box {
+            transform: scale(1);
+        }
 
-/* =========================================================================
+        /* Interactive Pass-Through Elements */
+        #product-details-modal.custom-modal-overlay,
+        #product-details-modal .custom-modal-box {
+            pointer-events: auto;
+        }
+
+        /* =========================================================================
    HEADER & WING SPLIT CORE LAYOUTS
    ========================================================================= */
 
-.footer-modal-header {
-    background: #001B5E;
-    padding: 16px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0; /* Keeps header tightly intact */
-}
+        .footer-modal-header {
+            background: #001B5E;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+            /* Keeps header tightly intact */
+        }
 
-.terminal-prefix {
-    color: #B6FF00;
-    font-family: monospace;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-}
+        .terminal-prefix {
+            color: #B6FF00;
+            font-family: monospace;
+            font-size: 13px;
+            letter-spacing: 0.5px;
+        }
 
-.footer-modal-close {
-    background: none;
-    border: none;
-    color: #ffffff;
-    cursor: pointer;
-    font-size: 1.25rem;
-    transition: transform 0.2s ease;
-}
-.footer-modal-close:hover {
-    transform: scale(1.1);
-}
+        .footer-modal-close {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: transform 0.2s ease;
+        }
 
-/* The Main Flex Split Body Workspace Container */
-.product-split-container {
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
+        .footer-modal-close:hover {
+            transform: scale(1.1);
+        }
 
-/* =========================================================================
+        /* The Main Flex Split Body Workspace Container */
+        .product-split-container {
+            display: flex;
+            flex-wrap: nowrap;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* =========================================================================
    LEFT WING: VISUAL SHOWCASE COMPONENT BUILD
    ========================================================================= */
 
-.product-visual-wing {
-    flex: 1 1 45%;
-    background: #fcfdfe;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    border-right: 1px solid rgba(0, 27, 94, 0.06);
-    padding: 24px;
-    box-sizing: border-box;
-}
+        .product-visual-wing {
+            flex: 1 1 45%;
+            background: #fcfdfe;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            border-right: 1px solid rgba(0, 27, 94, 0.06);
+            padding: 24px;
+            box-sizing: border-box;
+        }
 
-.zoom-lens-wrapper {
-    width: 100%;
-    height: 100%;
-    min-height: 320px;
-    position: relative;
-    overflow: hidden;
-    cursor: zoom-in;
-    border-radius: 12px;
-}
+        .zoom-lens-wrapper {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            position: relative;
+            overflow: hidden;
+            cursor: zoom-in;
+            border-radius: 12px;
+        }
 
-.modal-product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.2s ease-out;
-    transform-origin: center center;
-}
+        .modal-product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.2s ease-out;
+            transform-origin: center center;
+        }
 
-.modal-meta-card {
-    width: 100%;
-    margin-top: 20px;
-    padding: 16px;
-    background: rgba(0, 27, 94, 0.03);
-    border-radius: 8px;
-    box-sizing: border-box;
-}
+        .modal-meta-card {
+            width: 100%;
+            margin-top: 20px;
+            padding: 16px;
+            background: rgba(0, 27, 94, 0.03);
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
 
-.modal-product-cat {
-    font-size: 0.71rem;
-    font-weight: 800;
-    color: #5b6b94;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 6px;
-}
+        .modal-product-cat {
+            font-size: 0.71rem;
+            font-weight: 800;
+            color: #5b6b94;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
 
-.modal-product-title {
-    color: #001B5E;
-    font-size: 1.4rem;
-    font-weight: 900;
-    line-height: 1.2;
-    margin: 0 0 6px 0;
-}
+        .modal-product-title {
+            color: #001B5E;
+            font-size: 1.4rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin: 0 0 6px 0;
+        }
 
-.modal-product-price {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #001B5E;
-}
+        .modal-product-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: #001B5E;
+        }
 
-/* =========================================================================
+        /* =========================================================================
    RIGHT WING: TELEMETRY FORM & USER INTERFACES
    ========================================================================= */
 
-.product-telemetry-wing {
-    flex: 1 1 55%;
-    padding: 32px;
-    background: #ffffff;
-    overflow-y: auto;
-    box-sizing: border-box;
-}
+        .product-telemetry-wing {
+            flex: 1 1 55%;
+            padding: 32px;
+            background: #ffffff;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
 
-/* Core Segment Header Subheadings */
-.product-telemetry-wing h3 {
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: #001B5E;
-    margin: 28px 0 16px 0;
-    letter-spacing: 1px;
-    border-bottom: 2px solid #001B5E;
-    padding-bottom: 6px;
-}
-.product-telemetry-wing h3:first-of-type {
-    margin-top: 0;
-}
+        /* Core Segment Header Subheadings */
+        .product-telemetry-wing h3 {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #001B5E;
+            margin: 28px 0 16px 0;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #001B5E;
+            padding-bottom: 6px;
+        }
 
-.config-group {
-    margin-bottom: 18px;
-}
+        .product-telemetry-wing h3:first-of-type {
+            margin-top: 0;
+        }
 
-.config-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-}
+        .config-group {
+            margin-bottom: 18px;
+        }
 
-.product-telemetry-wing h4 {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #001B5E;
-    margin: 0 0 8px 0;
-    letter-spacing: 0.5px;
-}
-.config-header h4 {
-    margin-bottom: 0;
-}
+        .config-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
 
-#size-validation-error {
-    font-size: 0.7rem;
-    font-weight: bold;
-    color: #d32f2f;
-    display: none;
-}
+        .product-telemetry-wing h4 {
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #001B5E;
+            margin: 0 0 8px 0;
+            letter-spacing: 0.5px;
+        }
 
-/* Size Buttons Selection Matrix Layout */
-.size-button-row {
-    display: flex;
-    gap: 10px;
-}
+        .config-header h4 {
+            margin-bottom: 0;
+        }
 
-.size-select-node {
-    flex: 1;
-    padding: 12px;
-    border: 1px solid rgba(0, 27, 94, 0.15);
-    background: #ffffff;
-    color: #001B5E;
-    font-weight: 700;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.size-select-node:hover {
-    border-color: #001B5E;
-    background: rgba(0, 27, 94, 0.02);
-}
+        #size-validation-error {
+            font-size: 0.7rem;
+            font-weight: bold;
+            color: #d32f2f;
+            display: none;
+        }
 
-.size-select-node.selected-node {
-    background: #001B5E !important;
-    color: #B6FF00 !important;
-    border-color: #001B5E !important;
-    box-shadow: 0 4px 12px rgba(0, 27, 94, 0.2);
-}
+        /* Size Buttons Selection Matrix Layout */
+        .size-button-row {
+            display: flex;
+            gap: 10px;
+        }
 
-/* Dropdown Menu Select Field Styling */
-#form-color-select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(0, 27, 94, 0.15);
-    border-radius: 6px;
-    color: #001B5E;
-    font-weight: 600;
-    outline: none;
-    background: #ffffff;
-    font-family: inherit;
-}
+        .size-select-node {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid rgba(0, 27, 94, 0.15);
+            background: #ffffff;
+            color: #001B5E;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
 
-/* Quantity Controls Mechanics Row */
-.qty-inline-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-}
-.qty-inline-row h4 {
-    margin-bottom: 0;
-}
+        .size-select-node:hover {
+            border-color: #001B5E;
+            background: rgba(0, 27, 94, 0.02);
+        }
 
-.qty-stepper-axis {
-    display: flex;
-    align-items: center;
-    border: 1px solid rgba(0, 27, 94, 0.15);
-    border-radius: 6px;
-    overflow: hidden;
-    background: #ffffff;
-}
-.qty-stepper-axis button {
-    padding: 8px 16px;
-    border: none;
-    background: none;
-    color: #001B5E;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-.qty-stepper-axis button:hover {
-    background: rgba(0, 27, 94, 0.05);
-}
-#qty-current-val {
-    padding: 0 12px;
-    font-weight: 700;
-    color: #001B5E;
-    font-size: 0.9rem;
-    min-width: 24px;
-    text-align: center;
-}
+        .size-select-node.selected-node {
+            background: #001B5E !important;
+            color: #B6FF00 !important;
+            border-color: #001B5E !important;
+            box-shadow: 0 4px 12px rgba(0, 27, 94, 0.2);
+        }
 
-/* Logistics Fields Dynamic Auto Grid Layout */
-.logistics-input-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+        /* Dropdown Menu Select Field Styling */
+        #form-color-select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(0, 27, 94, 0.15);
+            border-radius: 6px;
+            color: #001B5E;
+            font-weight: 600;
+            outline: none;
+            background: #ffffff;
+            font-family: inherit;
+        }
 
-.split-input-row {
-    display: flex;
-    gap: 12px;
-}
-.split-input-row input {
-    flex: 1;
-    min-width: 0; /* Prevents overflow inside flexible fields */
-}
+        /* Quantity Controls Mechanics Row */
+        .qty-inline-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
 
-.logistics-input-grid input,
-.logistics-input-grid textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid rgba(0, 27, 94, 0.15);
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-family: inherit;
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.2s;
-}
-.logistics-input-grid input:focus,
-.logistics-input-grid textarea:focus {
-    border-color: #001B5E;
-}
-.logistics-input-grid textarea {
-    resize: none;
-}
+        .qty-inline-row h4 {
+            margin-bottom: 0;
+        }
 
-/* Settlement Radio Cards Architecture */
-.payment-method-row {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 28px;
-}
+        .qty-stepper-axis {
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(0, 27, 94, 0.15);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #ffffff;
+        }
 
-.payment-card-node {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px;
-    border: 1px solid rgba(0, 27, 94, 0.15);
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    color: #001B5E;
-    font-size: 0.9rem;
-    transition: all 0.2s;
-}
-.payment-card-node:hover {
-    background: rgba(0, 27, 94, 0.01);
-    border-color: #001B5E;
-}
-.payment-card-node input {
-    accent-color: #001B5E;
-    width: 16px;
-    height: 16px;
-    margin: 0;
-}
+        .qty-stepper-axis button {
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            color: #001B5E;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
 
-/* Primary Checkout Action Button Component */
-#modal-whatsapp-trigger {
-    width: 100%;
-    padding: 16px;
-    background: #25D366;
-    color: #ffffff;
-    border: none;
-    border-radius: 10px;
-    font-weight: 800;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
-    transition: all 0.2s ease;
-}
-#modal-whatsapp-trigger:hover {
-    background: #20ba59;
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
-}
-#modal-whatsapp-trigger svg {
-    width: 22px;
-    height: 22px;
-    fill: currentColor;
-}
+        .qty-stepper-axis button:hover {
+            background: rgba(0, 27, 94, 0.05);
+        }
 
-/* =========================================================================
+        #qty-current-val {
+            padding: 0 12px;
+            font-weight: 700;
+            color: #001B5E;
+            font-size: 0.9rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* Logistics Fields Dynamic Auto Grid Layout */
+        .logistics-input-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .split-input-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .split-input-row input {
+            flex: 1;
+            min-width: 0;
+            /* Prevents overflow inside flexible fields */
+        }
+
+        .logistics-input-grid input,
+        .logistics-input-grid textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(0, 27, 94, 0.15);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .logistics-input-grid input:focus,
+        .logistics-input-grid textarea:focus {
+            border-color: #001B5E;
+        }
+
+        .logistics-input-grid textarea {
+            resize: none;
+        }
+
+        /* Settlement Radio Cards Architecture */
+        .payment-method-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .payment-card-node {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            border: 1px solid rgba(0, 27, 94, 0.15);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #001B5E;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .payment-card-node:hover {
+            background: rgba(0, 27, 94, 0.01);
+            border-color: #001B5E;
+        }
+
+        .payment-card-node input {
+            accent-color: #001B5E;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+        }
+
+        /* Primary Checkout Action Button Component */
+        #modal-whatsapp-trigger {
+            width: 100%;
+            padding: 16px;
+            background: #25D366;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        #modal-whatsapp-trigger:hover {
+            background: #20ba59;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+        }
+
+        #modal-whatsapp-trigger svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        /* =========================================================================
    RESPONSIVE MATRIX MEDIA QUERY MEDIA RULES
    ========================================================================= */
 
-/* Medium Devices & Small Tablets Viewport Snap points */
-@media (max-width: 900px) {
-    .custom-modal-box {
-        max-height: calc(100vh - 30px);
-    }
-    
-    .product-split-container {
-        flex-direction: column; /* Stack visual wing above telemetry inputs */
-        overflow-y: auto; /* Enable vertical canvas scrolling on modal body */
-    }
+        /* Medium Devices & Small Tablets Viewport Snap points */
+        @media (max-width: 900px) {
+            .custom-modal-box {
+                max-height: calc(100vh - 30px);
+            }
 
-    .product-visual-wing {
-        border-right: none;
-        border-bottom: 1px solid rgba(0, 27, 94, 0.06);
-        padding: 20px;
-        flex: 0 0 auto; /* Stop height stretching */
-    }
+            .product-split-container {
+                flex-direction: column;
+                /* Stack visual wing above telemetry inputs */
+                overflow-y: auto;
+                /* Enable vertical canvas scrolling on modal body */
+            }
 
-    .zoom-lens-wrapper {
-        height: 280px;
-        min-height: 280px;
-    }
+            .product-visual-wing {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 27, 94, 0.06);
+                padding: 20px;
+                flex: 0 0 auto;
+                /* Stop height stretching */
+            }
 
-    .product-telemetry-wing {
-        padding: 24px;
-        overflow-y: visible; /* Let the entire split container handle scrolling */
-        flex: 0 0 auto;
-    }
-}
+            .zoom-lens-wrapper {
+                height: 280px;
+                min-height: 280px;
+            }
 
-/* Micro Phone & Ultra-Mobile Screen Layouts Viewports */
-@media (max-width: 500px) {
-    .custom-modal-overlay {
-        padding: 10px;
-    }
+            .product-telemetry-wing {
+                padding: 24px;
+                overflow-y: visible;
+                /* Let the entire split container handle scrolling */
+                flex: 0 0 auto;
+            }
+        }
 
-    .custom-modal-box {
-        max-height: calc(100vh - 20px);
-        border-radius: 12px;
-    }
+        /* Micro Phone & Ultra-Mobile Screen Layouts Viewports */
+        @media (max-width: 500px) {
+            .custom-modal-overlay {
+                padding: 10px;
+            }
 
-    .footer-modal-header {
-        padding: 12px 16px;
-    }
-    
-    .terminal-prefix {
-        font-size: 11px;
-    }
+            .custom-modal-box {
+                max-height: calc(100vh - 20px);
+                border-radius: 12px;
+            }
 
-    .product-visual-wing {
-        padding: 16px;
-    }
+            .footer-modal-header {
+                padding: 12px 16px;
+            }
 
-    .zoom-lens-wrapper {
-        height: 220px;
-        min-height: 220px;
-    }
+            .terminal-prefix {
+                font-size: 11px;
+            }
 
-    .product-telemetry-wing {
-        padding: 20px 16px;
-    }
+            .product-visual-wing {
+                padding: 16px;
+            }
 
-    /* Compress size grid to fit narrow screens safely */
-    .size-button-row {
-        gap: 6px;
-    }
-    .size-select-node {
-        padding: 10px 4px;
-        font-size: 0.85rem;
-    }
+            .zoom-lens-wrapper {
+                height: 220px;
+                min-height: 220px;
+            }
 
-    /* Stack inner grid inputs into distinct single columns */
-    .split-input-row {
-        flex-direction: column;
-        gap: 12px;
-    }
+            .product-telemetry-wing {
+                padding: 20px 16px;
+            }
 
-    /* Stack settlement cards vertically */
-    .payment-method-row {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .payment-card-node {
-        padding: 12px;
-    }
+            /* Compress size grid to fit narrow screens safely */
+            .size-button-row {
+                gap: 6px;
+            }
 
-    #modal-whatsapp-trigger {
-        padding: 14px;
-        font-size: 0.9rem;
-    }
-}
+            .size-select-node {
+                padding: 10px 4px;
+                font-size: 0.85rem;
+            }
+
+            /* Stack inner grid inputs into distinct single columns */
+            .split-input-row {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            /* Stack settlement cards vertically */
+            .payment-method-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .payment-card-node {
+                padding: 12px;
+            }
+
+            #modal-whatsapp-trigger {
+                padding: 14px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 
 <body class="shop-page-body">
+
+    <div class="bg-blur-blob blob-1"></div>
+    <div class="bg-blur-blob blob-2"></div>
+    <div class="particles-container" id="particles"></div>
+
+    <div class="page-transit-overlay" id="transit-curtain"></div>
 
     <header class="navbar">
         <div class="nav-container">
@@ -518,75 +548,9 @@
                     <a href="./shop.html">Accessories</a>
                     <a href="./contact.html">Contact</a>
                 </nav>
-
-                <div class="mobile-auth-sync-container">
-                    <div id="nav-guest-links-mobile" class="mobile-guest-links">
-                        <a href="#" class="mobile-link-login" id="nav-login-trigger-mobile">LOG IN</a>
-                        <button class="mobile-btn-signup" id="nav-signup-trigger-mobile">SIGN UP</button>
-                    </div>
-
-                    <div id="nav-user-profile-mobile" class="mobile-user-profile" style="display: none;">
-                        <div class="mobile-profile-info">
-                            <div class="avatar-circle" id="user-avatar-badge-mobile">U</div>
-                            <span class="profile-name" id="user-display-name-mobile">Operator</span>
-                        </div>
-                        <div class="mobile-profile-menu">
-                            <a href="#profile" class="mobile-menu-item"><i class="fa-solid fa-user-gear"></i>
-                                Profile</a>
-                            <a href="#settings" class="mobile-menu-item"><i class="fa-solid fa-sliders"></i>
-                                Settings</a>
-                            <button class="mobile-menu-item mobile-logout" id="session-logout-btn-mobile">
-                                <i class="fa-solid fa-power-off"></i> Logout
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="nav-actions">
-                <div id="nav-guest-links" style="display: flex; align-items: center; gap: 1rem;">
-                    <a href="#" class="link-login" id="nav-login-trigger">LOG IN</a>
-                    <button class="btn-signup" id="nav-signup-trigger">SIGN UP</button>
-                </div>
-
-                <div id="nav-user-profile" class="user-profile-zone" style="display: none;">
-                    <div class="profile-trigger-wrapper" id="profile-menu-trigger">
-                        <div class="avatar-circle" id="user-avatar-badge">U</div>
-                        <span class="profile-operator-name" id="user-display-name">Operator</span>
-                        <i class="fa-solid fa-chevron-down dropdown-arrow-icon"></i>
-                    </div>
-
-                    <div class="profile-dropdown-matrix" id="profile-floating-dropdown">
-                        <div class="dropdown-header-context">
-                            <span class="operator-role-tag">> ACTIVE_SESSION</span>
-                        </div>
-                        <a href="#profile" class="dropdown-link-item">
-                            <i class="fa-solid fa-user-gear"></i> Profile
-                        </a>
-                        <a href="#settings" class="dropdown-link-item">
-                            <i class="fa-solid fa-sliders"></i> Settings
-                        </a>
-                        <div class="dropdown-divider-line"></div>
-                        <button class="dropdown-link-item logout-action-trigger" id="session-logout-btn">
-                            <i class="fa-solid fa-power-off"></i> Logout
-                        </button>
-                    </div>
-                </div>
-
-                <button class="nav-cart-trigger" id="global-cart-btn" onclick="navigateToCart(event)">
-                    <div class="cart-icon-wrapper">
-                        <svg class="svg-cart-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="8" cy="21" r="1"></circle>
-                            <circle cx="19" cy="21" r="1"></circle>
-                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12">
-                            </path>
-                        </svg>
-                        <span class="cart-pulse-badge" id="cart-item-indicator"></span>
-                    </div>
-                    <span class="cart-trigger-label">VAULT</span>
-                </button>
-
                 <button class="mobile-menu-toggle" id="menu-toggle-btn" aria-label="Toggle Navigation Menu">
                     <span class="hamburger-bar"></span>
                     <span class="hamburger-bar"></span>
@@ -595,6 +559,7 @@
             </div>
         </div>
     </header>
+
 
     <div class="shop-utility-bar">
         <div class="utility-container">
@@ -890,117 +855,124 @@
     </main>
 
     <div class="custom-modal-overlay" id="product-details-modal">
-    <div class="custom-modal-box product-view-matrix">
+        <div class="custom-modal-box product-view-matrix">
 
-        <!-- Fixed Header Core -->
-        <div class="footer-modal-header">
-            <span class="terminal-prefix">> CORE_PRODUCT_MANIFEST // ACQUISITION TERMINAL</span>
-            <button class="footer-modal-close" id="close-details-modal-btn">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <!-- Adaptive Two-Wing Workspace Container -->
-        <div class="product-split-container">
-
-            <!-- Left Wing: Premium Visual Showcase -->
-            <div class="product-visual-wing">
-                <div class="zoom-lens-wrapper">
-                    <img id="detail-product-img" class="modal-product-img" src="" alt="Product View">
-                </div>
-
-                <div class="modal-meta-card">
-                    <span id="detail-product-cat" class="modal-product-cat">CATEGORY</span>
-                    <h2 id="detail-product-name" class="modal-product-title">PRODUCT TITLE</h2>
-                    <div id="detail-product-price" class="modal-product-price">$0.00</div>
-                </div>
+            <!-- Fixed Header Core -->
+            <div class="footer-modal-header">
+                <span class="terminal-prefix">> CORE_PRODUCT_MANIFEST // ACQUISITION TERMINAL</span>
+                <button class="footer-modal-close" id="close-details-modal-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
             </div>
 
-            <!-- Right Wing: Telemetry Logistics Pipeline Form -->
-            <div class="product-telemetry-wing">
-                <form id="cl-order-pipeline-form" onsubmit="executeWhatsAppOrder(event)">
+            <!-- Adaptive Two-Wing Workspace Container -->
+            <div class="product-split-container">
 
-                    <h3>[01] SELECT CONFIGURATIONS</h3>
-
-                    <!-- Size Selection Grid Matrix -->
-                    <div class="config-group">
-                        <div class="config-header">
-                            <h4>SIZE MATRIX:</h4>
-                            <span id="size-validation-error">✕ REQUIRED</span>
-                        </div>
-                        <input type="hidden" id="selected-size-value" name="size" required>
-                        <div class="size-button-row">
-                            <button type="button" class="size-select-node" onclick="setFormSize(this, 'S')">S</button>
-                            <button type="button" class="size-select-node" onclick="setFormSize(this, 'M')">M</button>
-                            <button type="button" class="size-select-node" onclick="setFormSize(this, 'L')">L</button>
-                            <button type="button" class="size-select-node" onclick="setFormSize(this, 'XL')">XL</button>
-                        </div>
+                <!-- Left Wing: Premium Visual Showcase -->
+                <div class="product-visual-wing">
+                    <div class="zoom-lens-wrapper">
+                        <img id="detail-product-img" class="modal-product-img" src="" alt="Product View">
                     </div>
 
-                    <!-- Color Dropdown Field Component -->
-                    <div class="config-group">
-                        <h4>COLOR VARIATION:</h4>
-                        <select id="form-color-select" required>
-                            <option value="" disabled selected>Choose Colorway...</option>
-                            <option value="Neon Volt">Neon Volt Matrix</option>
-                            <option value="Cyber Navy">Cyber Navy Core</option>
-                            <option value="Stealth Dark">Stealth Dark Matter</option>
-                            <option value="Liquid Matte Alabaster">Liquid Matte Alabaster</option>
-                        </select>
+                    <div class="modal-meta-card">
+                        <span id="detail-product-cat" class="modal-product-cat">CATEGORY</span>
+                        <h2 id="detail-product-name" class="modal-product-title">PRODUCT TITLE</h2>
+                        <div id="detail-product-price" class="modal-product-price">$0.00</div>
                     </div>
+                </div>
 
-                    <!-- Quantity Adjuster Engine -->
-                    <div class="config-group qty-inline-row">
-                        <h4>QUANTITY:</h4>
-                        <div class="qty-stepper-axis">
-                            <button type="button" onclick="adjustFormQty(-1)">-</button>
-                            <span id="qty-current-val">1</span>
-                            <button type="button" onclick="adjustFormQty(1)">+</button>
+                <!-- Right Wing: Telemetry Logistics Pipeline Form -->
+                <div class="product-telemetry-wing">
+                    <form id="cl-order-pipeline-form" onsubmit="executeWhatsAppOrder(event)">
+
+                        <h3>[01] SELECT CONFIGURATIONS</h3>
+
+                        <!-- Size Selection Grid Matrix -->
+                        <div class="config-group">
+                            <div class="config-header">
+                                <h4>SIZE MATRIX:</h4>
+                                <span id="size-validation-error">✕ REQUIRED</span>
+                            </div>
+                            <input type="hidden" id="selected-size-value" name="size" required>
+                            <div class="size-button-row">
+                                <button type="button" class="size-select-node"
+                                    onclick="setFormSize(this, 'S')">S</button>
+                                <button type="button" class="size-select-node"
+                                    onclick="setFormSize(this, 'M')">M</button>
+                                <button type="button" class="size-select-node"
+                                    onclick="setFormSize(this, 'L')">L</button>
+                                <button type="button" class="size-select-node"
+                                    onclick="setFormSize(this, 'XL')">XL</button>
+                            </div>
                         </div>
-                    </div>
 
-                    <h3>[02] LOGISTICS DATA ROUTING</h3>
-
-                    <!-- Customer Information Inputs Layout -->
-                    <div class="logistics-input-grid">
-                        <div class="full-width-input">
-                            <input type="text" id="form-fullname" placeholder="Full Name Here" required>
+                        <!-- Color Dropdown Field Component -->
+                        <div class="config-group">
+                            <h4>COLOR VARIATION:</h4>
+                            <select id="form-color-select" required>
+                                <option value="" disabled selected>Choose Colorway...</option>
+                                <option value="Neon Volt">Neon Volt Matrix</option>
+                                <option value="Cyber Navy">Cyber Navy Core</option>
+                                <option value="Stealth Dark">Stealth Dark Matter</option>
+                                <option value="Liquid Matte Alabaster">Liquid Matte Alabaster</option>
+                            </select>
                         </div>
-                        <div class="split-input-row">
-                            <input type="email" id="form-email" placeholder="Operator Email" required>
-                            <input type="tel" id="form-phone" placeholder="Active Phone Number" required>
+
+                        <!-- Quantity Adjuster Engine -->
+                        <div class="config-group qty-inline-row">
+                            <h4>QUANTITY:</h4>
+                            <div class="qty-stepper-axis">
+                                <button type="button" onclick="adjustFormQty(-1)">-</button>
+                                <span id="qty-current-val">1</span>
+                                <button type="button" onclick="adjustFormQty(1)">+</button>
+                            </div>
                         </div>
-                        <div class="full-width-input">
-                            <textarea id="form-address" placeholder="Complete Shipping Destination / Delivery Address Profile..." rows="3" required></textarea>
+
+                        <h3>[02] LOGISTICS DATA ROUTING</h3>
+
+                        <!-- Customer Information Inputs Layout -->
+                        <div class="logistics-input-grid">
+                            <div class="full-width-input">
+                                <input type="text" id="form-fullname" placeholder="Full Name Here" required>
+                            </div>
+                            <div class="split-input-row">
+                                <input type="email" id="form-email" placeholder="Operator Email" required>
+                                <input type="tel" id="form-phone" placeholder="Active Phone Number" required>
+                            </div>
+                            <div class="full-width-input">
+                                <textarea id="form-address"
+                                    placeholder="Complete Shipping Destination / Delivery Address Profile..." rows="3"
+                                    required></textarea>
+                            </div>
                         </div>
-                    </div>
 
-                    <h3>[03] SETTLEMENT PROTOCOL</h3>
+                        <h3>[03] SETTLEMENT PROTOCOL</h3>
 
-                    <!-- Payment Choice Cards Group -->
-                    <div class="payment-method-row">
-                        <label class="payment-card-node">
-                            <input type="radio" name="payment_method" value="Cash on Delivery" checked> 
-                            <span>Cash on Delivery</span>
-                        </label>
-                        <label class="payment-card-node">
-                            <input type="radio" name="payment_method" value="Online Payment Transfer"> 
-                            <span>Online Transfer</span>
-                        </label>
-                    </div>
+                        <!-- Payment Choice Cards Group -->
+                        <div class="payment-method-row">
+                            <label class="payment-card-node">
+                                <input type="radio" name="payment_method" value="Cash on Delivery" checked>
+                                <span>Cash on Delivery</span>
+                            </label>
+                            <label class="payment-card-node">
+                                <input type="radio" name="payment_method" value="Online Payment Transfer">
+                                <span>Online Transfer</span>
+                            </label>
+                        </div>
 
-                    <!-- CTA Action Gateway Button -->
-                    <button type="button" id="modal-whatsapp-trigger">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.705 1.457h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                        INITIALIZE ORDER OVER WHATSAPP
-                    </button>
-                </form>
+                        <!-- CTA Action Gateway Button -->
+                        <button type="button" id="modal-whatsapp-trigger">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.705 1.457h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            INITIALIZE ORDER OVER WHATSAPP
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 <script src="navbar.js"></script>
 <script>
